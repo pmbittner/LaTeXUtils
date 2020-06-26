@@ -1,0 +1,18 @@
+%\usepackage{ifthen}
+\newboolean{final}
+
+\ifthenelse{\boolean{final}}{
+	\newcommand{\todo}[1]{}
+	\newcommand{\todots}{}
+	\newcommand{\hint}[1]{}
+	\newcommand{\review}[1]{}
+	\newcommand{\questionForReview}[1]{}
+	\newcommand{\saveSpaceHere}[1]{}
+}{
+	\newcommand{\todo}[1]{{\color{red}\textit{[#1]}}}
+	\newcommand{\todots}{\todo{\ldots}}
+	\newcommand{\hint}[1]{{\color{hint}\textit{#1}}}
+	\newcommand{\review}[1]{\textcolor{orange}{[#1]}}
+	\newcommand{\questionForReview}[1]{\review{Question for Review: #1}}
+	\newcommand{\saveSpaceHere}[1]{\hint{Save space here: #1}}
+}
