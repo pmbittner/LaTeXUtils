@@ -1,0 +1,10 @@
+\NewEnviron{textbox}{
+	\begin{center}
+		\setlength\fboxsep{0.5em}
+		\fbox{
+			\parbox{0.8\linewidth}{
+				\BODY{}
+			}
+		}
+	\end{center}
+}
