@@ -1,52 +1,19 @@
-% Todo: Make this smarter with an own macro.
+\newcommand{\latexutilautorefoverride}[2]{
+	\ifcsname #1\endcsname
+		\expandafter\renewcommand\csname #1\endcsname{#2}
+	\else
+		\expandafter\newcommand\csname #1\endcsname{#2}
+	\fi	
+}
 
-\ifcsname figureautorefname\endcsname
-\renewcommand*{\figureautorefname}{Fig.}
-\else
-\newcommand*{\figureautorefname}{Fig.}
-\fi
-
-\ifcsname equationautorefname\endcsname
-\renewcommand*{\equationautorefname}{Eq.}
-\else
-\newcommand*{\equationautorefname}{Eq.}
-\fi
-
-\ifcsname sectionautorefname\endcsname
-\renewcommand*{\sectionautorefname}{Sec.}
-\else
-\newcommand*{\sectionautorefname}{Sec.}
-\fi
-
-\ifcsname subsectionautorefname\endcsname
-\renewcommand*{\subsectionautorefname}{Sec.}
-\else
-\newcommand*{\subsectionautorefname}{Sec.}
-\fi
-
-\ifcsname subsubsectionautorefname\endcsname
-\renewcommand*{\subsubsectionautorefname}{Sec.}
-\else
-\newcommand*{\subsubsectionautorefname}{Sec.}
-\fi
-
-\ifcsname definitionautorefname\endcsname
-\renewcommand*{\definitionautorefname}{Def.}
-\else
-\newcommand*{\definitionautorefname}{Def.}
-\fi
-
-\ifcsname algorithmautorefname\endcsname
-\renewcommand*{\algorithmautorefname}{Alg.}
-\else
-\newcommand{\algorithmautorefname}{Alg.}
-\fi
-
-\ifcsname footnoteautorefname\endcsname
-\renewcommand*{\footnoteautorefname}{Footnote}
-\else
-\newcommand*{\footnoteautorefname}{Footnote}
-\fi
+\latexutilautorefoverride{figureautorefname}{Fig.}
+\latexutilautorefoverride{equationautorefname}{Eq.}
+\latexutilautorefoverride{sectionautorefname}{Sec.}
+\latexutilautorefoverride{subsectionautorefname}{Sec.}
+\latexutilautorefoverride{subsubsectionautorefname}{Sec.}
+\latexutilautorefoverride{definitionautorefname}{Def.}
+\latexutilautorefoverride{footnoteautorefname}{Footnote}
+\latexutilautorefoverride{algorithmautorefname}{Alg.}
 
 \makeatletter
 \patchcmd{\ALG@step}{\addtocounter{ALG@line}{1}}{\refstepcounter{ALG@line}}{}{}
