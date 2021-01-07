@@ -1,0 +1,21 @@
+\newcommand{\latexutilautorefoverride}[2]{
+	\ifcsname #1\endcsname
+		\expandafter\renewcommand\csname #1\endcsname{#2}
+	\else
+		\expandafter\newcommand\csname #1\endcsname{#2}
+	\fi	
+}
+
+\latexutilautorefoverride{figureautorefname}{Fig.}
+\latexutilautorefoverride{equationautorefname}{Eq.}
+\latexutilautorefoverride{sectionautorefname}{Sec.}
+\latexutilautorefoverride{subsectionautorefname}{Sec.}
+\latexutilautorefoverride{subsubsectionautorefname}{Sec.}
+\latexutilautorefoverride{definitionautorefname}{Def.}
+\latexutilautorefoverride{footnoteautorefname}{Footnote}
+\latexutilautorefoverride{algorithmautorefname}{Alg.}
+
+\makeatletter
+\patchcmd{\ALG@step}{\addtocounter{ALG@line}{1}}{\refstepcounter{ALG@line}}{}{}
+\newcommand{\ALG@lineautorefname}{Line}
+\makeatother
