@@ -8,6 +8,7 @@
 	\newcommand{\review}[1]{}
 	\newcommand{\questionForReview}[1]{}
 	\newcommand{\saveSpaceHere}[1]{}
+	\newcommand{\changed}[1]{#1}
 }{
 	\newcommand{\todo}[1]{{\color{red}\textit{[#1]}}}
 	\newcommand{\todots}{\todo{\ldots}}
@@ -15,4 +16,5 @@
 	\newcommand{\review}[1]{\textcolor{orange}{[#1]}}
 	\newcommand{\questionForReview}[1]{\review{Question for Review: #1}}
 	\newcommand{\saveSpaceHere}[1]{\hint{Save space here: #1}}
+	\newcommand{\changed}[1]{{\color{blue}#1}}
 }
