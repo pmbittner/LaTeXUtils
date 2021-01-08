@@ -1,0 +1,11 @@
+% Takes the name of a macro and runs the macro with that name without arguments.
+% Make sure that the macro with the given name does not take any arguments.
+% For example \runCommandByName{dots} will evaluate to \dots.
+\newcommand{\runCommandByName}[1]{\csname #1\endcsname}
+
+% Given a command whose value represents a name, creates a new macro that represents the plural of that name.
+% For example, the following:
+%   \newcommand{\myFavouriteBread}{toast}
+%   \makePluralMacro{myFavouriteBread}
+% will create a new macro \toastpl that will evaluate to toasts.
+\newcommand{\makePluralMacro}[1]{\expandafter\newcommand\csname #1pl\endcsname{\runCommandByName{#1}s}}
