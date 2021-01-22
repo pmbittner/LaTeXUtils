@@ -5,8 +5,8 @@ Feel free to take what you need!
 I welcome any issues or pull-requests.
 
 ## Usage
-Include individual files as you need (e.g., with `\input` or `\include`).
-Including the main file [`LaTeXUtils.tex`](LaTeXUtils.tex) will include all utilities in [core](core) (except for [`lst.tex`](core/lst.tex) and [`tabular.tex`](core/tabular.tex):
+Include individual files as you need (e.g., with `\input`).
+Including the main file [`LaTeXUtils.tex`](LaTeXUtils.tex) will include all utilities in [core](core) (except for [`lst.tex`](core/lst.tex) and [`tabular.tex`](core/tabular.tex)):
 ```tex
 \input{LaTeXUtils/LaTeXUtils.tex}
 ```
