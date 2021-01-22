@@ -1,8 +1,13 @@
-\input{LaTexUtils/core/abbreviations}
-\input{LaTexUtils/core/colours}
-\input{LaTexUtils/core/annotations}
-\input{LaTexUtils/core/bool}
-\input{LaTexUtils/core/math}
-\input{LaTexUtils/core/code}
-\input{LaTexUtils/core/misc}
-\input{LaTexUtils/misc/names}
+\ifcsname latexutilsdir\endcsname
+\else
+  \newcommand{\latexutilsdir}{LaTeXUtils}
+\fi
+
+\input{\latexutilsdir/core/abbreviations}
+\input{\latexutilsdir/core/colours}
+\input{\latexutilsdir/core/annotations}
+\input{\latexutilsdir/core/bool}
+\input{\latexutilsdir/core/math}
+\input{\latexutilsdir/core/code}
+\input{\latexutilsdir/core/misc}
+\input{\latexutilsdir/misc/names}
