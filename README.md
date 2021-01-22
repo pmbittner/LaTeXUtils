@@ -24,4 +24,5 @@ For instance, [`abbreviations.tex`](abbreviations.tex) requires the package `xpu
 
 \providecommand{\eg}[0]{e.g\xperiod}
 \providecommand{\ie}[0]{i.e\xperiod}
+...
 ```
