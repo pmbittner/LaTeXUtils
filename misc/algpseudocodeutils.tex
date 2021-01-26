@@ -1,0 +1,10 @@
+%\usepackage{algpseudocode}
+
+% Define "for each" operator
+\algnewcommand\algorithmicforeach{\textbf{for each}}
+\algdef{S}[FOR]{ForEach}[1]{\algorithmicforeach\ #1\ \algorithmicdo}
+
+% Multiline comment
+% #1: Optional argument. Number between 0 and 1 that describes the relative width of the comment in the algorithm environment. Defaults to 0.3.
+% #2: Mandatory argument. The text that should be inside the comment.
+\newcommand{\MultLineComment}[2][0.3]{\Comment{\parbox[t]{#1 \linewidth}{#2}}}
