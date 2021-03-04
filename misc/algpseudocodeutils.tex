@@ -4,6 +4,10 @@
 \algnewcommand\algorithmicforeach{\textbf{for each}}
 \algdef{S}[FOR]{ForEach}[1]{\algorithmicforeach\ #1\ \algorithmicdo}
 
+% Define "Assert" operator
+\algnewcommand\algorithmicassert{\textbf{Assert}}
+\algnewcommand\Assert[1]{\State \algorithmicassert{} #1}%
+
 % Multiline comment
 % #1: Optional argument. Number between 0 and 1 that describes the relative width of the comment in the algorithm environment. Defaults to 0.3.
 % #2: Mandatory argument. The text that should be inside the comment.
