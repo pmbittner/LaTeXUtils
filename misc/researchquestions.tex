@@ -1,0 +1,56 @@
+%%% Depends on "misc/commandutils.tex"
+
+%%% Utility methods to deal with research questions as named variables (and not with numbers)
+%%% This hopefully helps to avoid ambiguity and confusion, and to allow secure renaming of research question numbers.
+
+%%% internal counter to keep track of how many RQs are defined
+\newcounter{rqcounter}
+\setcounter{rqcounter}{1}
+
+%%% With \defineRQ you can define your research question by providing
+%%% - an identifier you want to use as the first argument
+%%% - the question as text as the second argument
+%%% The order in which you define your research questions matters as it defines their numbers.
+%%% For example:
+%%%     \defineRQ{SkyBlue}{Why is the sky blue?}
+%%%     \defineRQ{EarthRound}{Why is the earth round?}
+%%% will make SkyBlue be your first research question and EarthRound your second.
+\newcommand{\defineRQ}[2]
+{
+	\newcounter{numOfRQ#1}
+	\setcounter{numOfRQ#1}{\value{rqcounter}}
+	\defineCommandByName{rqValue#1}{#2}
+	\refstepcounter{rqcounter}
+}
+
+%%% With \refRQ you can reference a research question in your text.
+%%% The argument to pass is the identifier of the research question you want to reference.
+%%% For example:
+%%%     We investigate \refRQ{SkyBlue} and \refRQ{EarthRound}.
+%%% yields
+%%%     We investigate RQ1 and RQ2.
+%%% depending on the order you defined the research questions with \defineRQ.
+\newcommand{\refRQ}[1]
+{RQ\arabic{numOfRQ#1}}
+
+%%% Gives the total amount of research questions you have.
+\newcommand{\refNumRQs}[0]
+{\the\numexpr\value{rqcounter}-1\relax}
+
+%%% With \printRQ you can print the research question in your text.
+%%% The argument to pass is the identifier of the research question you want to reference.
+%%% For example:
+%%%     Our main questions is: \refRQ{SkyBlue}
+%%% yields
+%%%     Our main questions is: Why is the sky blue?
+\newcommand{\printRQ}[1]
+{\runCommandByName{rqValue#1}}
+
+%%% \showRQInDescription is a shortcut to introduce your research questions in a desription environment.
+%%% Example usage:
+%%% \begin{description}
+%%%     \showRQInDescription{SkyBlue}
+%%%     \showRQInDescription{EarthRound}
+%%% \end{description}
+\newcommand{\showRQInDescription}[1]
+{\item[\refRQ{#1}] \printRQ{#1}}

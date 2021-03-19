@@ -1,7 +1,4 @@
-% Takes the name of a macro and runs the macro with that name without arguments.
-% Make sure that the macro with the given name does not take any arguments.
-% For example \runCommandByName{dots} will evaluate to \dots.
-\newcommand{\runCommandByName}[1]{\csname #1\endcsname}
+%%% Depends on "misc/commandutils.tex"
 
 % Given a command whose value represents a name, creates a new macro that represents the plural of that name.
 % For example, the following:
