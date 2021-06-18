@@ -1,11 +1,11 @@
 %%% Depends on "misc/commandutils.tex"
 
-% Given a command whose value represents a name, creates a new macro that represents the plural of that name.
-% For example, the following:
-%   \newcommand{\myFavouriteBread}{toast}
-%   \makePluralMacro{myFavouriteBread}
-% will create a new macro \toastpl that will evaluate to toasts.
-% As an optional argument one may pass an alternative ending replacing "s".
-% For instance, the plural of patch should be patches so you should use
-%   \makePluralMacro[es]{patch}
+%%% Given a command whose value represents a name, creates a new macro that represents the plural of that name.
+%%% For example, the following:
+%%%   \newcommand{\myFavouriteBread}{toast}
+%%%   \makePluralMacro{myFavouriteBread}
+%%% will create a new macro \toastpl that will evaluate to toasts.
+%%% As an optional argument one may pass an alternative ending replacing "s".
+%%% For instance, the plural of patch should be patches so you should use
+%%%   \makePluralMacro[es]{patch}
 \newcommand{\makePluralMacro}[2][s]{\expandafter\newcommand\csname #2pl\endcsname{\runCommandByName{#2}#1}}
