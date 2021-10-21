@@ -15,11 +15,16 @@
 %%%     \defineRQ{SkyBlue}{Why is the sky blue?}
 %%%     \defineRQ{EarthRound}{Why is the earth round?}
 %%% will make SkyBlue be your first research question and EarthRound your second.
-\newcommand{\defineRQ}[2]
+%%% As an optional argument, you might give a short explanation that can be used for references
+%%% where you don't want to repeat the whole question. By default, the short description is empty.
+%%% An example for its usage is:
+%%%     \defineRQ{SkyBlue}[Blue Sky]{Why is the sky blue?}
+\newcommand{\defineRQ}[3][]
 {
-	\newcounter{numOfRQ#1}
-	\setcounter{numOfRQ#1}{\value{rqcounter}}
-	\defineCommandByName{rqValue#1}{#2}
+	\newcounter{numOfRQ#2}
+	\setcounter{numOfRQ#2}{\value{rqcounter}}
+	\defineCommandByName{rqValue#2}{#3}
+	\defineCommandByName{rqShortValue#2}{#1}
 	\refstepcounter{rqcounter}
 }
 
@@ -45,6 +50,11 @@
 %%%     Our main questions is: Why is the sky blue?
 \newcommand{\printRQ}[1]
 {\runCommandByName{rqValue#1}}
+
+%%% The same as \printRQ but prints the short description which is the optional argument
+%%% to \defineRQ.
+\newcommand{\printRQShort}[1]
+{\runCommandByName{rqShortValue#1}}
 
 %%% \showRQInDescription is a shortcut to introduce your research questions in a desription environment.
 %%% Example usage:
