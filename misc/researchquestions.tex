@@ -18,7 +18,7 @@
 %%% As an optional argument, you might give a short explanation that can be used for references
 %%% where you don't want to repeat the whole question. By default, the short description is empty.
 %%% An example for its usage is:
-%%%     \defineRQ{SkyBlue}[Blue Sky]{Why is the sky blue?}
+%%%     \defineRQ[Blue Sky]{SkyBlue}{Why is the sky blue?}
 \newcommand{\defineRQ}[3][]
 {
 	\newcounter{numOfRQ#2}
@@ -28,6 +28,14 @@
 	\refstepcounter{rqcounter}
 }
 
+%%% Returns the number of a research question.
+%%% For example:
+%%%     RQs \refRQ{SkyBlue} and \refRQ{EarthRound}.
+%%% yields
+%%%     RQs 1 and 2.
+\newcommand{\refNumRQ}[1]
+{\arabic{numOfRQ#1}}
+
 %%% With \refRQ you can reference a research question in your text.
 %%% The argument to pass is the identifier of the research question you want to reference.
 %%% For example:
@@ -36,7 +44,8 @@
 %%%     We investigate RQ1 and RQ2.
 %%% depending on the order you defined the research questions with \defineRQ.
 \newcommand{\refRQ}[1]
-{RQ\arabic{numOfRQ#1}}
+{RQ\refNumRQ{#1}}
+
 
 %%% Gives the total amount of research questions you have.
 \newcommand{\refNumRQs}[0]
