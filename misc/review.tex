@@ -1,0 +1,19 @@
+﻿%%% \usepackage{todonotes}
+
+%%% Takes as first argument the name of a reviewer and as second argument a color they want to be associated to.
+%%% Produces two macros for the reviewer to add todonotes to a document.
+%%% For instance, \defineReviewCommands{alice}{green} creates two macros \alice and \alicei that each take as single argument
+%%% a remark/note/thought/arbitrary text that will be shown in the document in the color green.
+%%% Thereby, \alice{...} uses the \todo command two show todos and \alicei{...} uses \todo[inline].
+%%%
+%%% Example usage:
+%%% \defineReviewCommands{alice}{green}
+%%% \defineReviewCommands{bob}{orange}
+%%% %%% some text here
+%%% This is missspelled.
+%%% \alicei{Change to "misspelled"}
+%%% \bobi{Thanks! Good catch! :)}
+\newcommand{\defineReviewCommands}[2]{
+	\expandafter\def\csname#1\endcsname##1{\todo[color=#2]{##1 -#1}}%%%
+	\expandafter\def\csname#1i\endcsname##1{\todo[inline,color=#2]{##1 -#1}}%%%
+}
