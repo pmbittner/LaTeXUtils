@@ -2,19 +2,19 @@
 %%% \newboolean{final}
 
 \ifthenelse{\boolean{final}}{
-	\newcommand{\todo}[1]{}
-	\newcommand{\todots}{}
-	\newcommand{\hint}[1]{}
-	\newcommand{\review}[1]{}
-	\newcommand{\questionForReview}[1]{}
-	\newcommand{\saveSpaceHere}[1]{}
-	\newcommand{\changed}[1]{#1}
+	\newcommand{\LUtodo}[1]{}
+	\newcommand{\LUtodots}{}
+	\newcommand{\LUhint}[1]{}
+	\newcommand{\LUreview}[1]{}
+	\newcommand{\LUquestionForReview}[1]{}
+	\newcommand{\LUsaveSpaceHere}[1]{}
+	\newcommand{\LUchanged}[1]{#1}
 }{
-	\newcommand{\todo}[1]{{\color{red}\textit{[#1]}}}
-	\newcommand{\todots}{\todo{\ldots}}
-	\newcommand{\hint}[1]{{\color{hint}\textit{[#1]}}}
-	\newcommand{\review}[1]{\textcolor{orange}{[#1]}}
-	\newcommand{\questionForReview}[1]{\review{Question for Review: #1}}
-	\newcommand{\saveSpaceHere}[1]{\hint{Save space here: #1}}
-	\newcommand{\changed}[1]{{\color{blue}#1}}
+	\newcommand{\LUtodo}[1]{{\color{red}\textit{[#1]}}}
+	\newcommand{\LUtodots}{\todo{\ldots}}
+	\newcommand{\LUhint}[1]{{\color{hint}\textit{[#1]}}}
+	\newcommand{\LUreview}[1]{\textcolor{orange}{[#1]}}
+	\newcommand{\LUquestionForReview}[1]{\review{Question for Review: #1}}
+	\newcommand{\LUsaveSpaceHere}[1]{\hint{Save space here: #1}}
+	\newcommand{\LUchanged}[1]{{\color{bLUe}#1}}
 }
