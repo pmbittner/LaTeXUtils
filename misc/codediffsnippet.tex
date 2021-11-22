@@ -1,0 +1,58 @@
+﻿% \usepackage{fancyvrb}
+% \usepackage{adjustbox}
+
+\definecolor{diffAddColour}{RGB}{161,215,106}
+\definecolor{diffRemColour}{RGB}{233,163,201}
+
+\newenvironment{LUcodediffsnippet}{\center\small\BVerbatim[commandchars=\\\{\}]}{\endBVerbatim\endcenter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%% COLOUR BOXES %%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Define a reference depth. 
+%You can choose either relative or absolute.
+%--------------------------
+\newlength{\LUCBDepthReference}
+\settodepth{\LUCBDepthReference}{m}%relative to a depth of a letter.
+%\setlength{\LUCBDepthReference}{6pt}%absolute value.
+
+%Define a reference Height. 
+%You can choose either relative or absolute.
+%--------------------------
+\newlength{\LUCBHeightReference}
+\settoheight{\LUCBHeightReference}{m}
+%\setlength{\LUCBHeightReference}{6pt}
+\newlength{\LUCBWidth}%
+
+\newcommand{\LUColorBox}[2][red]%
+{%
+	\settowidth{\LUCBWidth}{#2}%
+	%\setlength{\fboxsep}{0pt}%
+	\colorbox{#1}%
+	{%      
+		\raisebox{-\LUCBDepthReference}%
+		{%
+			\parbox[b][\LUCBHeightReference+\LUCBDepthReference][c]{\LUCBWidth}{\centering#2}%
+		}%
+	}%
+}
+
+\newcommand{\insertedCode}[1]{\LUColorBox[diffAddColour]{#1}}
+\newcommand{\deletedCode}[1]{\LUColorBox[diffRemColour]{#1}}
+
+\newcommand{\unifiedDiffAddSymbol}{+}
+\newcommand{\unifiedDiffRemSymbol}{-}
+\newcommand{\unifiedDiffAdd}{\textcolor{green}{\unifiedDiffAddSymbol}}
+\newcommand{\unifiedDiffRem}{\textcolor{red}{\unifiedDiffRemSymbol}}
+%\newcommand{\lineUnc}{\ \ }
+%\newcommand{\lineAdd}{\unifiedDiffAdd~}
+%\newcommand{\lineRem}{\unifiedDiffRem~}
+\newcommand{\lineUnc}[1]{\ \ #1}
+%\newcommand{\lineAdd}[1]{\unifiedDiffAdd~\colorbox{diffAddColour}{#1}}
+%\newcommand{\lineRem}[1]{\unifiedDiffRem~\colorbox{diffRemColour}{#1}}
+\newcommand{\lineAdd}[1]{\unifiedDiffAdd~\insertedCode{#1}}
+\newcommand{\lineRem}[1]{\unifiedDiffRem~\deletedCode{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% COLOUR BOXES END %%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
