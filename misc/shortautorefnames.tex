@@ -6,14 +6,20 @@
 	\fi	
 }
 
-\latexutilautorefoverride{figureautorefname}{Fig.}
-\latexutilautorefoverride{equationautorefname}{Eq.}
-\latexutilautorefoverride{sectionautorefname}{Sec.}
-\latexutilautorefoverride{subsectionautorefname}{Sec.}
-\latexutilautorefoverride{subsubsectionautorefname}{Sec.}
-\latexutilautorefoverride{definitionautorefname}{Def.}
-\latexutilautorefoverride{footnoteautorefname}{Footnote}
-\latexutilautorefoverride{algorithmautorefname}{Alg.}
+%%% You might turn off the default overrides by defining a command with name LUnoDefaultAutorefOverrides before including this file.
+%%% \newcommand{\LUnoDefaultAutorefOverrides}{}
+\ifcsname LUnoDefaultAutorefOverrides\endcsname
+
+\else
+    \latexutilautorefoverride{figureautorefname}{Fig.}
+    \latexutilautorefoverride{equationautorefname}{Eq.}
+    \latexutilautorefoverride{sectionautorefname}{Sec.}
+    \latexutilautorefoverride{subsectionautorefname}{Sec.}
+    \latexutilautorefoverride{subsubsectionautorefname}{Sec.}
+    \latexutilautorefoverride{definitionautorefname}{Def.}
+    \latexutilautorefoverride{footnoteautorefname}{Footnote}
+    \latexutilautorefoverride{algorithmautorefname}{Alg.}
+\fi
 
 \makeatletter
 \patchcmd{\ALG@step}{\addtocounter{ALG@line}{1}}{\refstepcounter{ALG@line}}{}{}
