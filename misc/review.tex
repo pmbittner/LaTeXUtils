@@ -15,5 +15,5 @@
 %%% \bobi{Thanks! Good catch! :)}
 \newcommand{\defineReviewCommands}[2]{
 	\expandafter\def\csname#1\endcsname##1{\todo[color=#2]{##1 -#1}}%%%
-	\expandafter\def\csname#1i\endcsname##1{\todo[inline,color=#2]{##1 -#1}}%%%
+	\expandafter\def\csname#1i\endcsname##1{\todo[inline,caption={},color=#2]{##1 -#1}}%%%
 }
