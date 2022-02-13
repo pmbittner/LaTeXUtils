@@ -5,6 +5,8 @@
 \definecolor{diffRemColour}{RGB}{233,163,201}
 
 \newenvironment{LUcodediffsnippet}{\center\small\BVerbatim[commandchars=\\\{\}]}{\endBVerbatim\endcenter}
+\newenvironment{LUcodediffsnippetNoVerb}{\raggedright\ttfamily\small}{}
+\newcommand{\LUcodediffsnippetNoVerbSpace}{\phantom{a}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%% COLOUR BOXES %%%%%%%%%%%%%%%%
@@ -48,6 +50,7 @@
 %\newcommand{\lineAdd}{\unifiedDiffAdd~}
 %\newcommand{\lineRem}{\unifiedDiffRem~}
 \newcommand{\lineUnc}[1]{\ \ #1}
+\newcommand{\lineUncNoVerb}[1]{\LUcodediffsnippetNoVerbSpace{}\LUcodediffsnippetNoVerbSpace{}#1}
 %\newcommand{\lineAdd}[1]{\unifiedDiffAdd~\colorbox{diffAddColour}{#1}}
 %\newcommand{\lineRem}[1]{\unifiedDiffRem~\colorbox{diffRemColour}{#1}}
 \newcommand{\lineAdd}[1]{\unifiedDiffAdd~\insertedCode{#1}}
