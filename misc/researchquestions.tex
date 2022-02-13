@@ -36,15 +36,21 @@
 \newcommand{\refNumRQ}[1]
 {\arabic{numOfRQ#1}}
 
-%%% With \refRQ you can reference a research question in your text.
-%%% The argument to pass is the identifier of the research question you want to reference.
+%%% With \refRQ and \refRG you can reference a research question or goal in your text.
+%%% The argument to pass is the identifier of the research question / goal you want to reference.
 %%% For example:
 %%%     We investigate \refRQ{SkyBlue} and \refRQ{EarthRound}.
 %%% yields
 %%%     We investigate RQ1 and RQ2.
+%%% and
+%%%     We investigate \refRG{SkyBlue} and \refRG{EarthRound}.
+%%% yields
+%%%     We investigate RG1 and RG2.
 %%% depending on the order you defined the research questions with \defineRQ.
 \newcommand{\refRQ}[1]
 {RQ\refNumRQ{#1}}
+\newcommand{\refRG}[1]
+{RG\refNumRQ{#1}}
 
 
 %%% Gives the total amount of research questions you have.
@@ -73,3 +79,5 @@
 %%% \end{description}
 \newcommand{\showRQInDescription}[1]
 {\item[\refRQ{#1}] \printRQ{#1}}
+\newcommand{\showRGInDescription}[1]
+{\item[\refRG{#1}] \printRQ{#1}}
