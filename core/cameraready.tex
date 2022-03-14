@@ -1,0 +1,16 @@
+﻿%%% \usepackage{ifthen}
+%%% \newboolean{cameraready}
+%%% \newboolean{showCamerareadyAndSubmission}
+
+\ifthenelse{\boolean{cameraready}}{
+	\newcommand{\firstForSubmissionSecondForCameraready}[2]{#1}
+}{
+    \ifthenelse{\boolean{showCamerareadyAndSubmission}}{
+        \newcommand{\firstForSubmissionSecondForCameraready}[2]{
+              \textcolor{orange}{\emph{For submission}}[#1]
+            | \textcolor{green}{\emph{For camera-ready}}[#2]
+        }
+    }{
+	    \newcommand{\firstForSubmissionSecondForCameraready}[2]{#2}
+    }
+}
