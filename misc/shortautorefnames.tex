@@ -21,7 +21,13 @@
     \latexutilautorefoverride{algorithmautorefname}{Alg.}
 \fi
 
-\makeatletter
-\patchcmd{\ALG@step}{\addtocounter{ALG@line}{1}}{\refstepcounter{ALG@line}}{}{}
-\newcommand{\ALG@lineautorefname}{Line}
-\makeatother
+%%% You might turn off automatic generation of line referencing in algorithms by defining a command with name LUnoDefaultAlgorithmLineAutoref before including this file.
+%%% \newcommand{\LUnoDefaultAlgorithmLineAutoref}{}
+\ifcsname LUnoDefaultAlgorithmLineAutoref\endcsname
+
+\else
+	\makeatletter
+	\patchcmd{\ALG@step}{\addtocounter{ALG@line}{1}}{\refstepcounter{ALG@line}}{}{}
+	\newcommand{\ALG@lineautorefname}{Line}
+	\makeatother
+\fi
