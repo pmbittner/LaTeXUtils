@@ -1,0 +1,5 @@
+﻿%%% Thanks to https://tex.stackexchange.com/questions/66465/how-to-get-actual-values-of-colour-theme-colours-in-beamer
+
+\newcommand{\LUgetValueOfColorAsHTML}[1]{\extractcolorspecs{#1}{\model}{\mycolor} \convertcolorspec{\model}{\mycolor}{HTML}\printcol \printcol}
+\newcommand{\LUgetValueOfColorAsRGB}[1]{\extractcolorspecs{#1}{\model}{\mycolor} \convertcolorspec{\model}{\mycolor}{RGB}\printcol \printcol}
+\newcommand{\LUgetValueOfColorAsCMYK}[1]{\extractcolorspecs{#1}{\model}{\mycolor} \convertcolorspec{\model}{\mycolor}{cmyk}\printcol \printcol}
