@@ -1,6 +1,9 @@
 %%% Takes the name of a macro (first argument) and defines it with the given body (second argument).
 \newcommand{\defineCommandByName}[2]{\expandafter\newcommand\csname #1\endcsname{#2}}
 
+%%% Same as \defineCommandByName but only defines the command it is not already defined.
+\newcommand{\defineCommandByNameIfUndefined}[2]{\ifcsname #1\endcsname\else\defineCommandByName{#1}{#2}\fi}
+
 %%% Takes the name of a macro and runs the macro with that name without arguments.
 %%% Make sure that the macro with the given name does not take any arguments.
 %%% For example \runCommandByName{dots} will evaluate to \dots.
