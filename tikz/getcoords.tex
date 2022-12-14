@@ -1,0 +1,14 @@
+﻿%%% Usage: Within a tikzpicture. Will save coordinates of a given node to the given commands.
+%%% Example:
+%%% % some node in my picture
+%%% \node[] (foo) at(somewhere but we do not know the coords) {};
+%%% \gettikzxy{(foo)}{\fooX}{\fooY}
+%%% % Now, \fooX and \fooY contain the respective ordinates.
+
+\makeatletter
+\newcommand{\gettikzxy}[3]{%
+  \tikz@scan@one@point\pgfutil@firstofone#1\relax
+  \edef#2{\the\pgf@x}%
+  \edef#3{\the\pgf@y}%
+}
+\makeatother
