@@ -1,0 +1,5 @@
+﻿%%% Includes graphics from a file (path to that file is the first argument) within a sentence, scaled to the text size.
+\newcommand{\includegraphicsInText}[1]{$\vcenter{\hbox{\includegraphics[height=\baselineskip]{#1}}}$}
+
+%%% Same as includegraphicsInText but for arbitrary text
+\newcommand{\useboxInText}[2][\baselineskip]{$\vcenter{\hbox{\resizebox{!}{#1}{\usebox{#2}}}}$}
