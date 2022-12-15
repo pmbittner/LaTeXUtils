@@ -1,4 +1,9 @@
-﻿%%% Includes graphics from a file (path to that file is the first argument) within a sentence, scaled to the text size.
+﻿%%% Use a box vertically centered.
+%%% Optional Argument: Scaling factor of the box, default is one
+%%% Second Argument: box name
+\newcommand{\useboxVerticallyCentered}[2][1]{\raisebox{-.45\baselineskip}{\scalebox{#1}{\usebox{#2}}}}
+
+%%% Includes graphics from a file (path to that file is the first argument) within a sentence, scaled to the text size.
 \newcommand{\includegraphicsInText}[1]{$\vcenter{\hbox{\includegraphics[height=\baselineskip]{#1}}}$}
 
 %%% Same as includegraphicsInText but for arbitrary text
