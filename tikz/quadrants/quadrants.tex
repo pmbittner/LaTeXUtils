@@ -1,0 +1,25 @@
+﻿\begin{tikzpicture}[overlay, remember picture]
+\coordinate[] (nw) at ($(current page.center)!0.5!(current page.north west)$);
+\coordinate[] (ne) at ($(current page.center)!0.5!(current page.north east)$);
+\coordinate[] (sw) at ($(current page.center)!0.5!(current page.south west)$);
+\coordinate[] (se) at ($(current page.center)!0.5!(current page.south east)$);
+
+\LUQuadrantsAnimNW{
+    \node[LUQuadrantsNWStyle] at (nw) {\LUQuadrantsNW};
+}
+\LUQuadrantsAnimNE{
+    \node[LUQuadrantsNEStyle] at (ne) {\LUQuadrantsNE};
+}
+\LUQuadrantsAnimSW{
+    \node[LUQuadrantsSWStyle] at (sw) {\LUQuadrantsSW};
+}
+\LUQuadrantsAnimSE{
+    \node[LUQuadrantsSEStyle] at (se) {\LUQuadrantsSE};
+}
+
+\draw[-] (current page.west) -- (current page.east);
+\draw[-] (current page.north) -- (current page.south);
+
+\LUQuadrantsPayload{}
+
+\end{tikzpicture}
