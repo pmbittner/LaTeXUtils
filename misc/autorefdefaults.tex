@@ -1,0 +1,11 @@
+﻿%%% requires previous inclusion of "shortautorefnames.tex"
+
+\latexutilautorefoverride{listingautorefname}{Listing}
+\latexutilautorefoverride{definitionautorefname}{Definition}
+\latexutilautorefoverride{theoremautorefname}{Definition}
+
+\ifcsname LUnoDefaultAutorefOverrides\endcsname
+	\latexutilautorefoverride{sectionautorefname}{Section}
+	\latexutilautorefoverride{subsectionautorefname}{Section}
+	\latexutilautorefoverride{subsubsectionautorefname}{Section}
+\fi
