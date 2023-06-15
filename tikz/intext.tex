@@ -4,8 +4,8 @@
 \newcommand{\useboxVerticallyCentered}[2][1]{\raisebox{-.45\baselineskip}{\scalebox{#1}{\usebox{#2}}}}
 
 %%% Includes graphics from a file (path to that file is the first argument) within a sentence, scaled to the text size.
-\newcommand{\includegraphicsVCentered}[2]{$\vcenter{\hbox{\includegraphics[#1]{#2}}}$}
+\newcommand{\includegraphicsVCentered}[2]{\ensuremath{\vcenter{\hbox{\includegraphics[#1]{#2}}}}}
 \newcommand{\includegraphicsInText}[1]{\includegraphicsVCentered{height=\baselineskip}{#1}}
 
 %%% Same as includegraphicsInText but for arbitrary text
-\newcommand{\useboxInText}[2][\baselineskip]{$\vcenter{\hbox{\resizebox{!}{#1}{\usebox{#2}}}}$}
+\newcommand{\useboxInText}[2][\baselineskip]{\ensuremath{\vcenter{\hbox{\resizebox{!}{#1}{\usebox{#2}}}}}}
