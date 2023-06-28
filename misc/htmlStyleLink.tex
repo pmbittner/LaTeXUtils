@@ -1,1 +1,9 @@
 ﻿\newcommand{\htmlStyleLink}[2]{\textcolor{blue}{\underline{\href{#1}{#2}}}}
+% \makeatletter
+% \newcommand*{\htmlStyleLink}{\begingroup\@makeother\#\@htmlStyleLink}
+% \newcommand*{\@htmlStyleLink}[2]{%
+%     \textcolor{blue}{\underline{\href{#1}{#2}}}%
+%     \endgroup}
+% \makeatother
+
+\newcommand{\mdStyleLink}[2]{\textcolor{blue}{\href{#2}{#1}}}
