@@ -7,5 +7,9 @@
 \newcommand{\includegraphicsVCentered}[2]{\ensuremath{\vcenter{\hbox{\includegraphics[#1]{#2}}}}}
 \newcommand{\includegraphicsInText}[1]{\includegraphicsVCentered{height=\baselineskip}{#1}}
 
+%%% The very same but for svgs
+\newcommand{\includesvgVCentered}[2]{\ensuremath{\vcenter{\hbox{\includesvg[#1]{#2}}}}}
+\newcommand{\includesvgInText}[1]{\includesvgVCentered{height=\baselineskip}{#1}}
+
 %%% Same as includegraphicsInText but for arbitrary text
 \newcommand{\useboxInText}[2][\baselineskip]{\ensuremath{\vcenter{\hbox{\resizebox{!}{#1}{\usebox{#2}}}}}}
