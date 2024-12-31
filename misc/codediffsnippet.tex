@@ -1,10 +1,6 @@
 ﻿% \usepackage{fancyvrb}
 % \usepackage{adjustbox}
-
-\definecolor{diffAddColour}{RGB}{161,215,106}
-\definecolor{diffRemColour}{RGB}{233,163,201}
-\colorlet{diffAddColourDarkened}{diffAddColour!90!darkgray}
-\colorlet{diffRemColourDarkened}{diffRemColour!90!darkgray}
+% unixdiff.tex
 
 \newenvironment{LUcodediffsnippet}{\center\small\BVerbatim[commandchars=\\\{\}]}{\endBVerbatim\endcenter}
 \newenvironment{LUcodediffsnippetNoVerb}{\raggedright\ttfamily\small}{}
@@ -44,10 +40,6 @@
 \newcommand{\insertedCode}[1]{\LUColorBox[diffAddColour]{#1}}
 \newcommand{\deletedCode}[1]{\LUColorBox[diffRemColour]{#1}}
 
-\newcommand{\unifiedDiffAddSymbol}{+}
-\newcommand{\unifiedDiffRemSymbol}{-}
-\newcommand{\unifiedDiffAdd}{\textcolor{diffAddColourDarkened}{\unifiedDiffAddSymbol}}
-\newcommand{\unifiedDiffRem}{\textcolor{diffRemColourDarkened}{\unifiedDiffRemSymbol}}
 %\newcommand{\lineUnc}{\ \ }
 %\newcommand{\lineAdd}{\unifiedDiffAdd~}
 %\newcommand{\lineRem}{\unifiedDiffRem~}
