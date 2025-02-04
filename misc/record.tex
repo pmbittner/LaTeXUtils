@@ -40,12 +40,12 @@
 %%% KNOWN BUG:
 %%% #1: record identifier
 %%% #2: record type
-%%% #2: attribute name; is always CamelCase (starting capitalized)
+%%% #3: attribute name; is always CamelCase (starting capitalized)
 %%% #4: then branch
 %%% #5: else branch
 \newcommand{\ifhasfield}[5]{%
   %%% if the property command is defined ...
-  \expandafter\ifdefined\csname #1@#2@#3\endcsname%
+  \ifcsname#1@#2@#3\endcsname%
     %%% ... and not an empty value
     \ifelseempty{\getfield{#1}{#2}{#3}}%
       %%% ... else branch
@@ -56,6 +56,12 @@
     %%% if the command is undefined, also run else branch
     #5%
   \fi%
+}
+
+\newcommand{\getfieldifpresent}[3]{%
+  \ifhasfield{#1}{#2}{#3}{%
+    \getfield{#1}{#2}{#3}%
+  }{}%
 }
 
 %%% example definition of a record
