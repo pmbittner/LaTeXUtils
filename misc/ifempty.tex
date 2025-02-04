@@ -1,0 +1,8 @@
+%%% Macro to check if another expression or macro is empty.
+%%% Example:
+%%% \ifelseempty{\linkFor{website}}{
+%%%   \href{\linkFor{website}}{my website}
+%%% }{
+%%%   my website
+%%% }
+\newcommand{\ifelseempty}[3]{\edef\temp{#1}\ifx\temp\empty#2\else#3\fi}
