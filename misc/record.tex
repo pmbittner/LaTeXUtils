@@ -1,0 +1,70 @@
+%%% Dependencies:
+%%% ./ifempty.tex
+%%% ./commandutils.tex
+
+%%% This module adds very lightweight "record" types to LaTeX.
+%%% The idea is that we can have objects like in Python or JavaScript:
+%%% A data blob with a set of fields which we can get and set.
+%%% (As of now, setting is constant: When we add a field to an object
+%%% that field can neither be removed nor changed. This makes debugging
+%%% much easier and matches most of my use cases.)
+\makeatletter
+
+%%% Conventions for implementing records.
+%%% A record instance has an identifier, which is only used internally (e.g., vatras or phdulm).
+%%% So these are basically variable names.
+%%% Each record instance definition must produce macros named "<identifier>@<type><property name>".
+%%% So for example, for my project "vatras", which is a "project" I can access its github stars by
+%%%   "vatras@projectGithubStars"
+%%% So a type definition of a record (such as those below) should create a set of macros of this naming scheme.
+%%% Record names and field names are always in CamelCase starting capitalized (e.g., Job, JobBegin).
+
+%%% Accesses a given field from a given record instance of a given type.
+%%% This macro crashes if the given property was not defined!
+%%% To check for that, use \hasprop.
+%%% #1: instance name
+%%% #2: type name
+%%% #3: field name
+\newcommand{\getfield}[3]{\runCommandByName{#1@#2@#3}}
+
+%%% Sets the given field of a given record instance of a given type to a given value.
+%%% Fields can only be set once!
+%%% (We could allow overwriting existing values in the future but that is against the idea of a central, declarative data specification.)
+%%% #1: instance name
+%%% #2: type name
+%%% #3: field name
+%%% #4: desired value
+\newcommand{\deffield}[4]{\defineCommandByName{#1@#2@#3}{#4}}
+
+%%% conditionally checks whether a record instance has a field.
+%%% KNOWN BUG:
+%%% #1: record identifier
+%%% #2: record type
+%%% #2: attribute name; is always CamelCase (starting capitalized)
+%%% #4: then branch
+%%% #5: else branch
+\newcommand{\ifhasfield}[5]{%
+  %%% if the property command is defined ...
+  \expandafter\ifdefined\csname #1@#2@#3\endcsname%
+    %%% ... and not an empty value
+    \ifelseempty{\getfield{#1}{#2}{#3}}%
+      %%% ... else branch
+      {#5}%
+      %%% ... then branch
+      {#4}%
+  \else%
+    %%% if the command is undefined, also run else branch
+    #5%
+  \fi%
+}
+
+%%% example definition of a record
+%%%   \newcommand{\defJob}[6]{%
+%%%     \deffield{#1}{Job}{Begin}{#2}%
+%%%     \deffield{#1}{Job}{End}{#3}%
+%%%     \deffield{#1}{Job}{Title}{#4}%
+%%%     \deffield{#1}{Job}{Employer}{#5}%
+%%%     \deffield{#1}{Job}{Description}{#6}%
+%%%   }
+
+\makeatother
