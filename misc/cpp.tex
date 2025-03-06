@@ -1,4 +1,5 @@
 ﻿\newcommand{\cppmacro}[1]{\LUcode{\#{#1}}}
+\newcommand{\jppmacro}[1]{\LUcode{//\#{#1}}}
 
 \newcommand{\cppif}[0]{\cppmacro{if}}
 \newcommand{\cppifdef}[0]{\cppmacro{ifdef}}
@@ -9,9 +10,16 @@
 \newcommand{\cppinclude}[0]{\cppmacro{include}}
 \newcommand{\cppifndefbold}[0]{\cppmacro{if\textbf{n}def}}
 
+\newcommand{\jppif}[0]{\jppmacro{if}}
+
 \newcommand{\PP}[0]{preprocessor}
 \newcommand{\PPCaps}[0]{Preprocessor}
 \newcommand{\PPTitleCase}[0]{Preprocessor}
+
 \newcommand{\CPP}[0]{C \PP}
 \newcommand{\CPPCaps}[0]{C \PP}
 \newcommand{\CPPTitleCase}[0]{C \PPTitleCase}
+
+\newcommand{\JPP}[0]{Java \PP}
+\newcommand{\JPPCaps}[0]{Java \PP}
+\newcommand{\JPPTitleCase}[0]{Java \PPTitleCase}
