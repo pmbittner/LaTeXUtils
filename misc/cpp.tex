@@ -1,16 +1,17 @@
-﻿\newcommand{\cppmacro}[1]{\LUcode{\#{#1}}}
+﻿%%% depends on ifempty.tex
+\newcommand{\cppmacro}[1]{\LUcode{\#{#1}}}
 \newcommand{\jppmacro}[1]{\LUcode{//\#{#1}}}
 
-\newcommand{\cppif}[0]{\cppmacro{if}}
-\newcommand{\cppifdef}[0]{\cppmacro{ifdef}}
+\newcommand{\cppif}[1]{\cppmacro{if\ifnotempty{#1}{ #1}}}
+\newcommand{\cppifdef}[1]{\cppmacro{ifdef\ifnotempty{#1}{ #1}}}
 \newcommand{\cppelse}[0]{\cppmacro{else}}
 \newcommand{\cppelif}[0]{\cppmacro{elif}}
-\newcommand{\cppifndef}[0]{\cppmacro{ifndef}}
+\newcommand{\cppifndef}[1]{\cppmacro{ifndef\ifnotempty{#1}{ #1}}}
 \newcommand{\cppendif}[0]{\cppmacro{endif}}
-\newcommand{\cppinclude}[0]{\cppmacro{include}}
-\newcommand{\cppifndefbold}[0]{\cppmacro{if\textbf{n}def}}
+\newcommand{\cppinclude}[1]{\cppmacro{include\ifnotempty{#1}{ #1}}}
+\newcommand{\cppifndefbold}[1]{\cppmacro{if\textbf{n}def\ifnotempty{#1}{ #1}}}
 
-\newcommand{\jppif}[0]{\jppmacro{if}}
+\newcommand{\jppif}[1]{\jppmacro{if\ifnotempty{#1}{ #1}}}
 
 \newcommand{\PP}[0]{preprocessor}
 \newcommand{\PPCaps}[0]{Preprocessor}
