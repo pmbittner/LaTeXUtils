@@ -6,3 +6,7 @@
 %%%   my website
 %%% }
 \newcommand{\ifelseempty}[3]{\edef\temp{#1}\ifx\temp\empty#2\else#3\fi}
+
+\newcommand{\ifempty}[2]{\ifelseempty{#1}{#2}{}}
+\newcommand{\ifnotempty}[2]{\ifelseempty{#1}{}{#2}}
+\let\ifnonempty\ifnotempty%convenience alias
