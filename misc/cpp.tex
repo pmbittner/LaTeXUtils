@@ -1,4 +1,5 @@
 ﻿%%% depends on ifempty.tex
+%%%            makeNameMacro.tex
 \newcommand{\cppmacro}[1]{\LUcode{\#{#1}}}
 \newcommand{\jppmacro}[1]{\LUcode{//\#{#1}}}
 
@@ -16,6 +17,9 @@
 \newcommand{\PP}[0]{preprocessor}
 \newcommand{\PPCaps}[0]{Preprocessor}
 \newcommand{\PPTitleCase}[0]{Preprocessor}
+\makePluralMacro{PP}
+\makePluralMacro{PPCaps}
+\makePluralMacro{PPTitleCase}
 
 \newcommand{\CPP}[0]{C \PP}
 \newcommand{\CPPCaps}[0]{C \PP}
