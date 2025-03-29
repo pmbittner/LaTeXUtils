@@ -1,8 +1,8 @@
 \newcommand{\latexutilautorefoverride}[2]{
-	\ifcsname #1\endcsname
-		\expandafter\renewcommand\csname #1\endcsname{#2}
+	\ifcsname #1autorefname\endcsname
+		\expandafter\renewcommand\csname #1autorefname\endcsname{#2}
 	\else
-		\expandafter\newcommand\csname #1\endcsname{#2}
+		\expandafter\newcommand\csname #1autorefname\endcsname{#2}
 	\fi	
 }
 
@@ -11,14 +11,14 @@
 \ifcsname LUnoDefaultAutorefOverrides\endcsname
 
 \else
-    \latexutilautorefoverride{figureautorefname}{Fig.}
-    \latexutilautorefoverride{equationautorefname}{Eq.}
-    \latexutilautorefoverride{sectionautorefname}{Sec.}
-    \latexutilautorefoverride{subsectionautorefname}{Sec.}
-    \latexutilautorefoverride{subsubsectionautorefname}{Sec.}
-    \latexutilautorefoverride{definitionautorefname}{Def.}
-    \latexutilautorefoverride{footnoteautorefname}{Footnote}
-    \latexutilautorefoverride{algorithmautorefname}{Alg.}
+    \latexutilautorefoverride{figure}{Fig.}
+    \latexutilautorefoverride{equation}{Eq.}
+    \latexutilautorefoverride{section}{Sec.}
+    \latexutilautorefoverride{subsection}{Sec.}
+    \latexutilautorefoverride{subsubsection}{Sec.}
+    \latexutilautorefoverride{definition}{Def.}
+    \latexutilautorefoverride{footnote}{Footnote}
+    \latexutilautorefoverride{algorithm}{Alg.}
 \fi
 
 %%% You might turn off automatic generation of line referencing in algorithms by defining a command with name LUnoDefaultAlgorithmLineAutoref before including this file.
