@@ -1,18 +1,21 @@
 ﻿%%% depends on ifempty.tex
 %%%            makeNameMacro.tex
-\newcommand{\cppmacro}[1]{\LUcode{\#{#1}}}
-\newcommand{\jppmacro}[1]{\LUcode{//\#{#1}}}
+\newcommand{\cppmacro}[1]{\LUcode{#1}}
+\newcommand{\jppmacro}[1]{\LUcode{#1}}
+%%% These macros are supposed to be used as a hook to change styling of keywords via \renewcommand.
+\newcommand{\cppmacrokeyword}[1]{\##1}
+\newcommand{\jppmacrokeyword}[1]{//\##1}
 
-\newcommand{\cppif}[1]{\cppmacro{if\ifnotempty{#1}{ #1}}}
-\newcommand{\cppifdef}[1]{\cppmacro{ifdef\ifnotempty{#1}{ #1}}}
-\newcommand{\cppelse}[0]{\cppmacro{else}}
-\newcommand{\cppelif}[0]{\cppmacro{elif}}
-\newcommand{\cppifndef}[1]{\cppmacro{ifndef\ifnotempty{#1}{ #1}}}
-\newcommand{\cppendif}[0]{\cppmacro{endif}}
-\newcommand{\cppinclude}[1]{\cppmacro{include\ifnotempty{#1}{ #1}}}
-\newcommand{\cppifndefbold}[1]{\cppmacro{if\textbf{n}def\ifnotempty{#1}{ #1}}}
+\newcommand{\cppif}[1]{\cppmacro{\cppmacrokeyword{if}\ifnotempty{#1}{ #1}}}
+\newcommand{\cppifdef}[1]{\cppmacro{\cppmacrokeyword{ifdef}\ifnotempty{#1}{ #1}}}
+\newcommand{\cppelse}[0]{\cppmacro{\cppmacrokeyword{else}}}
+\newcommand{\cppelif}[0]{\cppmacro{\cppmacrokeyword{elif}}}
+\newcommand{\cppifndef}[1]{\cppmacro{\cppmacrokeyword{ifndef}\ifnotempty{#1}{ #1}}}
+\newcommand{\cppendif}[0]{\cppmacro{\cppmacrokeyword{endif}}}
+\newcommand{\cppinclude}[1]{\cppmacro{\cppmacrokeyword{include}\ifnotempty{#1}{ #1}}}
+\newcommand{\cppifndefbold}[1]{\cppmacro{\cppmacrokeyword{if\textbf{n}def}\ifnotempty{#1}{ #1}}}
 
-\newcommand{\jppif}[1]{\jppmacro{if\ifnotempty{#1}{ #1}}}
+\newcommand{\jppif}[1]{\jppmacro{\jppmacrokeyword{if}\ifnotempty{#1}{ #1}}}
 
 \newcommand{\PP}[0]{preprocessor}
 \newcommand{\PPCaps}[0]{Preprocessor}
