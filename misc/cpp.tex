@@ -6,16 +6,18 @@
 \newcommand{\cppmacrokeyword}[1]{\##1}
 \newcommand{\jppmacrokeyword}[1]{//\##1}
 
-\newcommand{\cppif}[1]{\cppmacro{\cppmacrokeyword{if}\ifnotempty{#1}{ #1}}}
-\newcommand{\cppifdef}[1]{\cppmacro{\cppmacrokeyword{ifdef}\ifnotempty{#1}{ #1}}}
-\newcommand{\cppelse}[0]{\cppmacro{\cppmacrokeyword{else}}}
-\newcommand{\cppelif}[0]{\cppmacro{\cppmacrokeyword{elif}}}
-\newcommand{\cppifndef}[1]{\cppmacro{\cppmacrokeyword{ifndef}\ifnotempty{#1}{ #1}}}
-\newcommand{\cppendif}[0]{\cppmacro{\cppmacrokeyword{endif}}}
-\newcommand{\cppinclude}[1]{\cppmacro{\cppmacrokeyword{include}\ifnotempty{#1}{ #1}}}
-\newcommand{\cppifndefbold}[1]{\cppmacro{\cppmacrokeyword{if\textbf{n}def}\ifnotempty{#1}{ #1}}}
+\newcommand{\cppdirective}[2]{\cppmacro{\cppmacrokeyword{#1}\ifnotempty{#2}{ #2}}}
+\newcommand{\jppdirective}[2]{\jppmacro{\jppmacrokeyword{#1}\ifnotempty{#2}{ #2}}}
+\newcommand{\cppif}[1]{\cppdirective{if}{#1}}
+\newcommand{\cppifdef}[1]{\cppdirective{ifdef}{#1}}
+\newcommand{\cppelse}[0]{\cppdirective{else}{}}
+\newcommand{\cppelif}[0]{\cppdirective{elif}{}}
+\newcommand{\cppifndef}[1]{\cppdirective{ifndef}{#1}}
+\newcommand{\cppendif}[0]{\cppdirective{endif}{}}
+\newcommand{\cppinclude}[1]{\cppdirective{include}{#1}}
+\newcommand{\cppifndefbold}[1]{\cppdirective{if\textbf{n}def}{#1}}
 
-\newcommand{\jppif}[1]{\jppmacro{\jppmacrokeyword{if}\ifnotempty{#1}{ #1}}}
+\newcommand{\jppif}[1]{\jppdirective{if}{#1}}
 
 \newcommand{\PP}[0]{preprocessor}
 \newcommand{\PPCaps}[0]{Preprocessor}
