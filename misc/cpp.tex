@@ -8,6 +8,12 @@
 
 \newcommand{\cppdirective}[2]{\cppmacro{\cppmacrokeyword{#1}\ifnotempty{#2}{ #2}}}
 \newcommand{\jppdirective}[2]{\jppmacro{\jppmacrokeyword{#1}\ifnotempty{#2}{ #2}}}
+
+%%% Alternatives for \cppdirective and \jppdirective that can be used when the second argument is not empty.
+%%% Use these macros in case something breaks with the inner \ifnotempty within \cppdirective/\jppdirective.
+\newcommand{\cppdirectivei}[2]{\cppmacro{\cppmacrokeyword{#1} #2}}
+\newcommand{\jppdirectivei}[2]{\jppmacro{\jppmacrokeyword{#1} #2}}
+
 \newcommand{\cppif}[1]{\cppdirective{if}{#1}}
 \newcommand{\cppifdef}[1]{\cppdirective{ifdef}{#1}}
 \newcommand{\cppelse}[0]{\cppdirective{else}{}}
