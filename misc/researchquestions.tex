@@ -5,7 +5,8 @@
 
 %%% internal counter to keep track of how many RQs are defined
 \newcounter{rqcounter}
-\setcounter{rqcounter}{1}
+\newcommand{\resetRQCounter}{\setcounter{rqcounter}{1}}
+\resetRQCounter{}
 
 %%% With \defineRQ you can define your research question by providing
 %%% - an identifier you want to use as the first argument
