@@ -5,23 +5,45 @@
 %%% This module adds very lightweight "record" types to LaTeX.
 %%% The idea is that we can have objects like in Python or JavaScript:
 %%% A data blob with a set of fields which we can get and set.
-%%% (As of now, setting is constant: When we add a field to an object
+%%% 
+%%% As an example, you can define a record as follows:
+%%%   \newcommand{\defJob}[6]{%
+%%%     \deffield{#1}{Job}{Begin}{#2}%
+%%%     \deffield{#1}{Job}{End}{#3}%
+%%%     \deffield{#1}{Job}{Title}{#4}%
+%%%     \deffield{#1}{Job}{Employer}{#5}%
+%%%     \deffield{#1}{Job}{Description}{#6}%
+%%%   }
+%%% and then create an instance as follows:
+%%%  \defJob{myFirstJob}
+%%%    {2000}
+%%%    {2001}
+%%%    {Newspaper Delivery}
+%%%    {The New York Times}
+%%%    {I delivered newspapers on every sunday morning.}
+%%% and later access fields by their names:
+%%%   \getfield{myFirstJob}{Job}{Title}
+%%% which will yield "Newspaper Delivery".
+%%%   
+%%% As of now, setting is constant: When we add a field to an object
 %%% that field can neither be removed nor changed. This makes debugging
-%%% much easier and matches most of my use cases.)
+%%% much easier and matches most of my use cases.
+%%% If you want to make fields be writable more than once, you have to reimplement
+%%% \deffield to use \def internally instead of \newcommand.
 \makeatletter
 
 %%% Conventions for implementing records.
-%%% A record instance has an identifier, which is only used internally (e.g., vatras or phdulm).
+%%% A record instance has an identifier, which is used only internally (e.g., myFirstJob).
 %%% So these are basically variable names.
-%%% Each record instance definition must produce macros named "<identifier>@<type><property name>".
-%%% So for example, for my project "vatras", which is a "project" I can access its github stars by
-%%%   "vatras@projectGithubStars"
-%%% So a type definition of a record (such as those below) should create a set of macros of this naming scheme.
+%%% Each record instance definition must produce macros named "<identifier>@<type>@<property name>".
+%%% So for example, for my project "vatras", which is a "Project" I can access its github stars by
+%%%   "vatras@Project@GithubStars"
+%%% So a type definition of a record should create a set of macros of this naming scheme.
 %%% Record names and field names are always in CamelCase starting capitalized (e.g., Job, JobBegin).
 
 %%% Accesses a given field from a given record instance of a given type.
 %%% This macro crashes if the given property was not defined!
-%%% To check for that, use \hasprop.
+%%% To check for that, use \ifhasfield.
 %%% #1: instance name
 %%% #2: type name
 %%% #3: field name
@@ -36,13 +58,12 @@
 %%% #4: desired value
 \newcommand{\deffield}[4]{\defineCommandByName{#1@#2@#3}{#4}}
 
-%%% conditionally checks whether a record instance has a field.
-%%% KNOWN BUG:
+%%% Conditionally returns a branch depending on whether a record instance has a field.
 %%% #1: record identifier
 %%% #2: record type
 %%% #3: attribute name; is always CamelCase (starting capitalized)
-%%% #4: then branch
-%%% #5: else branch
+%%% #4: then branch (put here what to do if the record instance has the field)
+%%% #5: else branch (put here what to do if the record instance does not have the field)
 \newcommand{\ifhasfield}[5]{%
   %%% if the property command is defined ...
   \ifcsname#1@#2@#3\endcsname%
@@ -58,19 +79,15 @@
   \fi%
 }
 
+%%% This evaluates to the field of the given record instance if present
+%%% or nothing if the field is not present.
+%%% #1: record identifier
+%%% #2: record type
+%%% #3: attribute name; is always CamelCase (starting capitalized)
 \newcommand{\getfieldifpresent}[3]{%
   \ifhasfield{#1}{#2}{#3}{%
     \getfield{#1}{#2}{#3}%
   }{}%
 }
-
-%%% example definition of a record
-%%%   \newcommand{\defJob}[6]{%
-%%%     \deffield{#1}{Job}{Begin}{#2}%
-%%%     \deffield{#1}{Job}{End}{#3}%
-%%%     \deffield{#1}{Job}{Title}{#4}%
-%%%     \deffield{#1}{Job}{Employer}{#5}%
-%%%     \deffield{#1}{Job}{Description}{#6}%
-%%%   }
 
 \makeatother
